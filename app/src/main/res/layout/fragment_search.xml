@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  tools:context="com.homework.search.ui.fragment.search.SearchFragment">
+
+  <data>
+
+    <import type="android.view.View"/>
+
+    <import type="com.homework.search.ui.fragment.search.SearchViewModel"/>
+
+    <variable
+      name="searchViewModel"
+      type="com.homework.search.ui.fragment.search.SearchViewModel"/>
+
+  </data>
+
+  <android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.RecyclerView
+      android:id="@+id/rv_search_contents"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_weight="1"
+      android:scrollbarSize="@dimen/contents_recycle_view_scrollbar_size"
+      android:scrollbarThumbVertical="@android:color/darker_gray"
+      android:scrollbars="vertical"
+      app:adapter="@{searchViewModel.thumbnailItems}"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"/>
+
+    <ProgressBar
+      android:id="@+id/progress"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="#55929292"
+      android:visibility="gone"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"/>
+
+  </android.support.constraint.ConstraintLayout>
+
+
+</layout>

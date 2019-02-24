@@ -1,0 +1,5 @@
+<resources>
+  <string name="app_name">ImageSearch</string>
+  <string name="api_error_message">Unexpected communication error.</string>
+  <string name="no_more_searching_message">No more searchable data.</string>
+</resources>

@@ -1,0 +1,96 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion versions.compileSdk
+    defaultConfig {
+        applicationId "com.homework.search"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.compileSdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
+    }
+    buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://dapi.kakao.com/v2/search/\"")
+            buildConfigField("String", "API_KEY", "\"KakaoAK 548e4aae003f932026e0a0049878124c\"")
+        }
+        release {
+            buildConfigField("String", "BASE_URL", "\"https://dapi.kakao.com/v2/search/\"")
+            buildConfigField("String", "API_KEY", "\"KakaoAK 548e4aae003f932026e0a0049878124c\"")
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility versions.sourceCompat
+        targetCompatibility versions.targetCompat
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //android
+    implementation deps.android.lifecycleExt
+    implementation deps.android.lifecycleCommon
+
+    //support
+    implementation deps.support.appCompat
+    implementation deps.support.recyclerView
+    implementation deps.support.cardView
+    implementation deps.support.support
+    implementation deps.support.designSupport
+    implementation deps.support.constraint
+
+    //google
+    implementation deps.google.dagger
+    implementation deps.google.daggerAndroid
+    implementation deps.google.daggerSupport
+    annotationProcessor deps.google.daggerCompiler
+    annotationProcessor deps.google.daggerProcessor
+    implementation deps.google.gson
+
+    //rx
+    implementation deps.reactivex.rxJava
+    implementation deps.reactivex.rxAndroid
+    implementation deps.reactivex.rxBinding
+
+    //square
+    implementation deps.square.retrofit
+    implementation deps.square.gsonConverter
+    implementation deps.square.adapterRxjava2
+    implementation deps.square.okhttp
+    implementation deps.square.okhttpLogging
+    implementation deps.square.glide
+    annotationProcessor deps.square.glideComplier
+
+    //test
+    testImplementation deps.test.junit
+    testImplementation deps.test.atslRunner
+    testImplementation deps.test.atslRules
+    testImplementation deps.test.livedataTesting
+    testImplementation deps.test.retrofitMock
+    testImplementation deps.test.mockWebServer
+    androidTestImplementation deps.test.mockAndroid
+    testImplementation deps.test.mockCore
+    androidTestImplementation deps.test.espressoCore
+    androidTestImplementation deps.test.espressoContrib
+    androidTestImplementation deps.test.espressoIntents
+    androidTestImplementation deps.test.androidTestRules
+    androidTestImplementation deps.test.androidTestRunner
+    implementation 'com.android.support.test.espresso:espresso-idling-resource:3.0.2'
+
+
+}
